@@ -3,6 +3,9 @@
 
 ** Algorithms analysis
 
+   *Note*: in the OPENQASM source files there are three algorithms using rotations along the z axis in any degree.
+   Those are not translated.
+
 
     #+CAPTION: Algorithms analysis
     #+NAME: tab:alg1
@@ -86,7 +89,6 @@
     | ~ex3_229~                    |          6 |       403 | RevLib  |                                                                                                                                                                                                                                                                                |
     | ~f2_232~                     |          8 |      1206 | RevLib  |                                                                                                                                                                                                                                                                                |
     | ~graycode6_47~               |          6 |         5 | RevLib  | The Graycode function transforms the number $x$ (with $0 \le x<26-1$) into the graycode.                                                                                                                                                                                       |
-    | ~ground_state_estimation_10~ |         13 |    360618 |         | Ground State Estimation                                                                                                                                                                                                                                                        |
     | ~ham15_107~                  |         15 |      8763 | RevLib  | This function realizes the hamming code of a 15 variables input.                                                                                                                                                                                                               |
     | ~ham3_102~                   |          3 |        20 | RevLib  | This function realizes the hamming code of a 3 variables input.                                                                                                                                                                                                                |
     | ~ham7_104~                   |          7 |       320 | RevLib  | This function realizes the hamming code of a 7 variables input.                                                                                                                                                                                                                |
@@ -97,9 +99,6 @@
     | ~hwb8_113~                   |          9 |     69380 | RevLib  | This function describes the hidden weighted bit function (HWB) over 8 variables. HWB seems to be the simplest function with exponential OBDD size cite:Bollig_1999                                                                                                             |
     | ~hwb9_119~                   |         10 |    207775 | RevLib  | This function describes the hidden weighted bit function (HWB) over 9 variables. HWB seems to be the simplest function with exponential OBDD size cite:Bollig_1999                                                                                                             |
     | ~inc_237~                    |         16 |     10619 | RevLib  |                                                                                                                                                                                                                                                                                |
-    | ~ising_model_10~             |         10 |       200 |         |                                                                                                                                                                                                                                                                                |
-    | ~ising_model_13~             |         13 |       263 |         |                                                                                                                                                                                                                                                                                |
-    | ~ising_model_16~             |         16 |       326 |         |                                                                                                                                                                                                                                                                                |
     | ~life_238~                   |         11 |     22445 | RevLib  | Identical to "life_min" function                                                                                                                                                                                                                                               |
     | ~majority_239~               |          7 |       612 | RevLib  |                                                                                                                                                                                                                                                                                |
     | ~max46_240~                  |         10 |     27126 | RevLib  |                                                                                                                                                                                                                                                                                |
@@ -125,8 +124,6 @@
     | ~plus63mod4096_163~          |         13 |    128744 | RevLib  | Add 63 to the input modulo 4096                                                                                                                                                                                                                                                |
     | ~plus63mod8192_164~          |         14 |    187112 | RevLib  | Add 63 to the input modulo 8192                                                                                                                                                                                                                                                |
     | ~pm1_249~                    |         14 |      1776 | RevLib  |                                                                                                                                                                                                                                                                                |
-    | ~qft_10~                     |         10 |       110 | ScaffCC |                                                                                                                                                                                                                                                                                |
-    | ~qft_16~                     |         16 |       272 | ScaffCC |                                                                                                                                                                                                                                                                                |
     | ~radd_250~                   |         13 |      3213 | RevLib  |                                                                                                                                                                                                                                                                                |
     | ~rd32-v0_66~                 |          4 |        34 | RevLib  | Counts the number of ones in the input.                                                                                                                                                                                                                                        |
     | ~rd32-v1_68~                 |          4 |        36 | RevLib  | Counts the number of ones in the input.                                                                                                                                                                                                                                        |
@@ -171,12 +168,11 @@
     | ~xor5_254~                   |          6 |         7 | RevLib  |                                                                                                                                                                                                                                                                                |
     | ~z4_268~                     |         11 |      3073 | RevLib  |                                                                                                                                                                                                                                                                                |
     |----------------------------+------------+-----------+---------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-
-
+    
 *** Algorithm Statistics
 
-    - Highest amount of gates: ~urf~ has a maximum of 512064 gates followed for the ~ground_state_estimation~ with 360618 gates
-    - Number of different algorithms: 89
+    - Highest amount of gates: ~urf~ has a maximum of 512064 gates followed by the ~hwb9_119~ with 207775 gates
+    - Number of different algorithms: 83
 
 ** OPENQASM to OpenQL translation
 

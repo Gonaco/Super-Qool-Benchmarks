@@ -47,15 +47,15 @@ def translate(openqasm_file, openql_file, dictionary_file=curdir+os.path.join(cu
 
             for line in openqasm.readlines():
 
-                match = re.findall(r'^(.+)\sq\[(\d+)\]((,)q\[(\d+)\])*;$',line)
+                match = re.findall(r'^(\w+)(.+)?\sq\[(\d+)\]((,)q\[(\d+)\])*;$',line)
                 if match:
                     # print(line)
                     # print(match)
                     if match[0][0] in dictionary:
-                        gates_buffer.append("k.gate('"+dictionary[match[0][0]]+"',"+match[0][1]+match[0][3]+match[0][4]+")\n")
+                        gates_buffer.append("k.gate('"+dictionary[match[0][0]]+match[0][1]+"',"+match[0][2]+match[0][4]+match[0][5]+")\n")
 
-                        n1 = int(match[0][1])
-                        n2 = int(match[0][4]) if match[0][4] is not '' else 0
+                        n1 = int(match[0][2])
+                        n2 = int(match[0][5]) if match[0][5] is not '' else 0
                         
                         if n1 > num_qubits or n2 > num_qubits:
                             if n1 > n2:

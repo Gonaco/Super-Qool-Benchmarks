@@ -47,7 +47,7 @@ def translate(openqasm_file, openql_file, dictionary_file=curdir+os.path.join(cu
 
             for line in openqasm.readlines():
 
-                match = re.findall(r'^(\w+)\sq\[(\d+)\]((,)q\[(\d+)\])*;$',line)
+                match = re.findall(r'^(.+)\sq\[(\d+)\]((,)q\[(\d+)\])*;$',line)
                 if match:
                     # print(line)
                     # print(match)

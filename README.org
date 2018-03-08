@@ -3,8 +3,8 @@
 
 ** Algorithms analysis
 
-   *Note*: in the OPENQASM source files there are three algorithms using rotations along the z axis in any degree.
-   Those are not translated.
+   *Note*: in the OPENQASM source files there are six algorithms using rotations along the z axis in any degree (QFT, Ising and Ground State Estimation).
+   Those are not translated for now.
 
 
     #+CAPTION: Algorithms analysis

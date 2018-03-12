@@ -170,12 +170,42 @@
     |----------------------------+------------+-----------+---------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 
 
+*** Classification
+    
+    
+**** Quantum gates
+
+     - ~miller_11~ 
+    
+**** Worst Cases
+
+     
+    
+**** ALUs
+
+     
+    
+**** Encoding Functions
+
+     
+    
+**** Arithmetic Functions
+
+     
+    
+**** Miscellaneous
+
+     
+    
+**** Symmetric Functions
+
+     
+
 *** Statistics    
 
     - Highest amount of gates: ~urf~ has a maximum of 512064 gates followed by the ~hwb9_119~ with 207775 gates
     - Number of different algorithms: 83
     - More details in [[file:benchmarks_profile/README.org][Benchmarks Profile]]
-    
 ** OPENQASM to OpenQL translation
 
    TODO...

@@ -1,0 +1,396 @@
+% Created 2018-04-03 Tue 11:13
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{beamer}
+
+      \usepackage{pgfpages}
+
+      %\setbeameroption{show notes}
+
+      %\setbeameroption{show notes on second screen=right}
+
+      \mode<presentation>
+
+      \usetheme{Madrid}
+
+      %\usecolortheme{{{{beamercolortheme}}}}
+
+      \setbeamercolor{structure}{fg=cyan!50!black}
+      \setbeamercolor*{block title example}{fg=cyan!50!black,bg=gray!10}
+      \setbeamertemplate{navigation symbols}{} % to remove the navigation symbols from the bottom of all slides uncomment this line
+      \AtBeginSection[]{
+        \begin{frame}
+        \vfill
+        \centering
+        \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+          \usebeamerfont{title}\insertsectionhead\par%
+        \end{beamercolorbox}
+        \vfill
+        \end{frame}
+
+\begin{frame}<beamer>
+\frametitle{Topic}
+\tableofcontents[currentsection]
+\end{frame}
+      }
+      \beamertemplateballitem
+
+      \setbeameroption{show notes}
+      \usepackage{listings}
+      \lstset{numbers=none,language=[ISO]C++,tabsize=4,
+  frame=single,
+  basicstyle=\small,
+  showspaces=false,showstringspaces=false,
+  showtabs=false,
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{red},
+  }
+
+      \institute[]{TU Delft}
+
+       \subject{Quantum Computing}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{minted}
+\usepackage{color}
+\usepackage{minted}
+\usepackage{parskip}
+\usetheme{default}
+\author{Daniel Moreno Manzano}
+\date{\today}
+\title{}
+\hypersetup{
+ pdfauthor={Daniel Moreno Manzano},
+ pdftitle={},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 25.1.1 (Org mode 9.0.5)}, 
+ pdflang={English}}
+\begin{document}
+
+\begin{frame}{Outline}
+\tableofcontents
+\end{frame}
+
+\begin{frame}[fragile,label={sec:org639c711}]{qbench}
+ \begin{block}{Algorithms analysis}
+\alert{Note}: in the OPENQASM source files there are six algorithms using rotations along the z axis in any degree (QFT, Ising and Ground State Estimation).
+Those are not translated for now.
+
+
+\begin{table}[htbp]
+\caption{\label{tab:org124c51e}
+Algorithms analysis}
+\centering
+\tiny
+\begin{tabular}{|p{3cm}|p{1.5cm}|p{1cm}|p{1cm}|p{7.5cm}|}
+\hline
+Algorithm & No. qubits & No. gates & Source & Expected Behaviour\\
+\hline
+ &  &  &  & \\
+\texttt{0410184\_169} & 14 & 211 & RevLib & A form of integer adder\\
+\texttt{3\_17\_13} & 3 & 36 & RevLib & worst case scenario for the approach presented in \cite{Miller_2003}\\
+\texttt{4\_49\_16} & 5 & 217 & RevLib & worst case scenario for the approach presented in \cite{Miller_2003}\\
+\texttt{4gt10-v1\_81} & 5 & 148 & RevLib & Checks, if input is greater than 10. (Note: Embedding with constant 1)\\
+\texttt{4gt11\_82} & 5 & 27 & RevLib & Checks, if input is greater than 11. (Note: Embedding with constant 1)\\
+\texttt{4gt11\_83} & 5 & 23 & RevLib & Checks, if input is greater than 11. (Note: Embedding with constant 1)\\
+\texttt{4gt11\_84} & 5 & 18 & RevLib & Checks, if input is greater than 11. (Note: Embedding with constant 1)\\
+\texttt{4gt12-v0\_86} & 6 & 251 & RevLib & Checks, if input is greater than 12. (Note: Embedding with constant 1)\\
+\texttt{4gt12-v0\_87} & 6 & 247 & RevLib & Checks, if input is greater than 12. (Note: Embedding with constant 1)\\
+\texttt{4gt12-v0\_88} & 6 & 194 & RevLib & Checks, if input is greater than 12. (Note: Embedding with constant 1)\\
+\texttt{4gt12-v1\_89} & 6 & 228 & RevLib & Checks, if input is greater than 12. (Note: Embedding with constant 1)\\
+\texttt{4gt13-v1\_93} & 5 & 68 & RevLib & Checks, if input is greater than 13. (Note: Embedding with constant 1)\\
+\texttt{4gt13\_90} & 5 & 107 & RevLib & Checks, if input is greater than 13. (Note: Embedding with constant 1)\\
+\texttt{4gt13\_91} & 5 & 103 & RevLib & Checks, if input is greater than 13. (Note: Embedding with constant 1)\\
+\texttt{4gt13\_92} & 5 & 66 & RevLib & Checks, if input is greater than 13. (Note: Embedding with constant 1)\\
+\texttt{4gt4-v0\_72} & 6 & 258 & RevLib & Checks, if input is greater than 4. (Note: Embedding with constant 1)\\
+\texttt{4gt4-v0\_73} & 6 & 395 & RevLib & Checks, if input is greater than 4. (Note: Embedding with constant 1)\\
+\texttt{4gt4-v0\_78} & 6 & 235 & RevLib & Checks, if input is greater than 4. (Note: Embedding with constant 1)\\
+\texttt{4gt4-v0\_79} & 6 & 231 & RevLib & Checks, if input is greater than 4. (Note: Embedding with constant 1)\\
+\texttt{4gt4-v0\_80} & 6 & 179 & RevLib & Checks, if input is greater than 4. (Note: Embedding with constant 1)\\
+\texttt{4gt4-v1\_74} & 6 & 273 & RevLib & Checks, if input is greater than 4. (Note: Embedding with constant 1)\\
+\texttt{4gt5\_75} & 5 & 83 & RevLib & Checks, if input is greater than 5. (Note: Embedding with constant 1)\\
+\texttt{4gt5\_76} & 5 & 91 & RevLib & Checks, if input is greater than 5. (Note: Embedding with constant 1)\\
+\texttt{4gt5\_77} & 5 & 131 & RevLib & Checks, if input is greater than 5. (Note: Embedding with constant 1)\\
+\texttt{4mod5-bdd\_287} & 7 & 70 & RevLib & Performs a modulo operation of the binary encoding of the input and the constant 5\\
+\texttt{4mod5-v0\_18} & 5 & 69 & RevLib & Performs a modulo operation of the binary encoding of the input and the constant 5\\
+\texttt{4mod5-v0\_19} & 5 & 35 & RevLib & Performs a modulo operation of the binary encoding of the input and the constant 5\\
+\texttt{4mod5-v0\_20} & 5 & 20 & RevLib & Performs a modulo operation of the binary encoding of the input and the constant 5\\
+\texttt{4mod5-v1\_22} & 5 & 21 & RevLib & Performs a modulo operation of the binary encoding of the input and the constant 5\\
+\texttt{4mod5-v1\_23} & 5 & 69 & RevLib & Performs a modulo operation of the binary encoding of the input and the constant 5\\
+\texttt{4mod5-v1\_24} & 5 & 36 & RevLib & Performs a modulo operation of the binary encoding of the input and the constant 5\\
+\texttt{4mod7-v0\_94} & 5 & 162 & RevLib & Performs a modulo operation of the binary encoding of the input and the constant 7\\
+\texttt{4mod7-v1\_96} & 5 & 164 & RevLib & Performs a modulo operation of the binary encoding of the input and the constant 7\\
+\texttt{9symml\_195} & 11 & 34881 & RevLib & \\
+\texttt{C17\_204} & 7 & 467 & RevLib & \\
+\texttt{adr4\_197} & 13 & 3439 & RevLib & \\
+\texttt{aj-e11\_165} & 5 & 151 & RevLib & \\
+\texttt{alu-bdd\_288} & 7 & 84 & RevLib & BDD-based synthesis of reversible logic for large functions based on \cite{Wille_2009}\\
+\texttt{alu-v0\_26} & 5 & 84 & RevLib & Arithmetic Logic Unit (ALU)\\
+\texttt{alu-v0\_27} & 5 & 36 & RevLib & Arithmetic Logic Unit (ALU)\\
+\texttt{alu-v1\_28} & 5 & 37 & RevLib & Arithmetic Logic Unit (ALU)\\
+\texttt{alu-v1\_29} & 5 & 37 & RevLib & Arithmetic Logic Unit (ALU)\\
+\texttt{alu-v2\_30} & 6 & 504 & RevLib & Arithmetic Logic Unit (ALU)\\
+\texttt{alu-v2\_31} & 5 & 451 & RevLib & Arithmetic Logic Unit (ALU)\\
+\texttt{alu-v2\_32} & 5 & 163 & RevLib & Arithmetic Logic Unit (ALU)\\
+\texttt{alu-v2\_33} & 5 & 37 & RevLib & Arithmetic Logic Unit (ALU)\\
+\texttt{alu-v3\_34} & 5 & 52 & RevLib & Arithmetic Logic Unit (ALU)\\
+\texttt{alu-v3\_35} & 5 & 37 & RevLib & Arithmetic Logic Unit (ALU)\\
+\texttt{alu-v4\_36} & 5 & 115 & RevLib & Arithmetic Logic Unit (ALU)\\
+\texttt{alu-v4\_37} & 5 & 37 & RevLib & Arithmetic Logic Unit (ALU)\\
+\texttt{clip\_206} & 14 & 33827 & RevLib & \\
+\texttt{cm152a\_212} & 12 & 1221 & RevLib & \\
+\texttt{cm42a\_207} & 14 & 1776 & RevLib & \\
+\texttt{cm82a\_208} & 8 & 650 & RevLib & \\
+\texttt{cm85a\_209} & 14 & 11414 & RevLib & \\
+\texttt{cnt3-5\_179} & 16 & 175 & RevLib & A reversible ternary counter with bit-width 5\\
+\texttt{cnt3-5\_180} & 16 & 485 & RevLib & A reversible ternary counter with bit-width 5\\
+\texttt{co14\_215} & 15 & 17936 & RevLib & \\
+\texttt{con1\_216} & 9 & 954 & RevLib & \\
+\texttt{cycle10\_2\_110} & 12 & 6050 & RevLib & \\
+\texttt{dc1\_220} & 11 & 1914 & RevLib & \\
+\texttt{dc2\_222} & 15 & 9462 & RevLib & \\
+\texttt{decod24-bdd\_294} & 6 & 73 & RevLib & BDD-based synthesis of reversible logic for large functions based on \cite{Wille_2009}\\
+\texttt{decod24-enable\_126} & 6 & 338 & RevLib & 2 to 4 binary decoder with enable\\
+\texttt{decod24-v0\_38} & 4 & 51 & RevLib & 2 to 4 binary decoder\\
+\texttt{decod24-v1\_41} & 5 & 85 & RevLib & 2 to 4 binary decoder\\
+\texttt{decod24-v2\_43} & 4 & 52 & RevLib & 2 to 4 binary decoder\\
+\texttt{decod24-v3\_45} & 5 & 150 & RevLib & 2 to 4 binary decoder\\
+\texttt{dist\_223} & 13 & 38046 & RevLib & \\
+\texttt{ex-1\_166} & 3 & 19 & RevLib & \\
+\texttt{ex1\_226} & 6 & 7 & RevLib & \\
+\texttt{ex2\_227} & 7 & 631 & RevLib & \\
+\texttt{ex3\_229} & 6 & 403 & RevLib & \\
+\texttt{f2\_232} & 8 & 1206 & RevLib & \\
+\texttt{graycode6\_47} & 6 & 5 & RevLib & The Graycode function transforms the number \(x\) (with \(0 \le x<26-1\)) into the graycode.\\
+\texttt{ham15\_107} & 15 & 8763 & RevLib & This function realizes the hamming code of a 15 variables input.\\
+\texttt{ham3\_102} & 3 & 20 & RevLib & This function realizes the hamming code of a 3 variables input.\\
+\texttt{ham7\_104} & 7 & 320 & RevLib & This function realizes the hamming code of a 7 variables input.\\
+\texttt{hwb4\_49} & 5 & 233 & RevLib & This function describes the hidden weighted bit function (HWB) over 4 variables. HWB seems to be the simplest function with exponential OBDD size \cite{Bollig_1999}\\
+\texttt{hwb5\_53} & 6 & 1336 & RevLib & This function describes the hidden weighted bit function (HWB) over 5 variables. HWB seems to be the simplest function with exponential OBDD size \cite{Bollig_1999}\\
+\texttt{hwb6\_56} & 7 & 6723 & RevLib & This function describes the hidden weighted bit function (HWB) over 6 variables. HWB seems to be the simplest function with exponential OBDD size \cite{Bollig_1999}\\
+\texttt{hwb7\_59} & 8 & 24379 & RevLib & This function describes the hidden weighted bit function (HWB) over 7 variables. HWB seems to be the simplest function with exponential OBDD size \cite{Bollig_1999}\\
+\texttt{hwb8\_113} & 9 & 69380 & RevLib & This function describes the hidden weighted bit function (HWB) over 8 variables. HWB seems to be the simplest function with exponential OBDD size \cite{Bollig_1999}\\
+\texttt{hwb9\_119} & 10 & 207775 & RevLib & This function describes the hidden weighted bit function (HWB) over 9 variables. HWB seems to be the simplest function with exponential OBDD size \cite{Bollig_1999}\\
+\texttt{inc\_237} & 16 & 10619 & RevLib & \\
+\texttt{life\_238} & 11 & 22445 & RevLib & Identical to "life\(_{\text{min}}\)" function\\
+\texttt{majority\_239} & 7 & 612 & RevLib & \\
+\texttt{max46\_240} & 10 & 27126 & RevLib & \\
+\texttt{miller\_11} & 3 & 50 & RevLib & This function describes the Toffoli gate (Miller gate)\\
+\texttt{mini-alu\_167} & 5 & 288 & RevLib & Simple ALU\\
+\texttt{mini\_alu\_305} & 10 & 173 & RevLib & \\
+\texttt{mini\_alu\_305} & 10 & 173 & RevLib & Simple ALU\\
+\texttt{misex1\_241} & 15 & 4813 & RevLib & \\
+\texttt{mlp4\_245} & 16 & 18852 & RevLib & A single digit BCD modulo-10 counter\\
+\texttt{mod10\_171} & 5 & 244 & RevLib & A single digit BCD modulo-10 counter\\
+\texttt{mod10\_176} & 5 & 178 & RevLib & This function realizes addition modulo 5\\
+\texttt{mod5adder\_127} & 6 & 555 & RevLib & \\
+\texttt{mod5d1\_63} & 5 & 22 & RevLib & \\
+\texttt{mod5d2\_64} & 5 & 53 & RevLib & \\
+\texttt{mod5mils\_65} & 5 & 35 & RevLib & \\
+\texttt{mod8-10\_177} & 6 & 440 & RevLib & A single digit BCD counter that counts modulo 8 if e=0 and modulo 10 if e=1\\
+\texttt{mod8-10\_178} & 6 & 342 & RevLib & A single digit BCD counter that counts modulo 8 if e=0 and modulo 10 if e=1\\
+\texttt{one-two-three-v0\_97} & 5 & 290 & RevLib & This function has 3 inputs and three outputs. The first output is assigned to 1 if in total 1 input is assigned to 1. The second output is assigned to 1 if in total 2 inputs are assigned to 1. The third output is assigned to 1 if in total all 3 inputs are assigned to 1.\\
+\texttt{one-two-three-v0\_98} & 5 & 146 & RevLib & This function has 3 inputs and three outputs. The first output is assigned to 1 if in total 1 input is assigned to 1. The second output is assigned to 1 if in total 2 inputs are assigned to 1. The third output is assigned to 1 if in total all 3 inputs are assigned to 1.\\
+\texttt{one-two-three-v1\_99} & 5 & 132 & RevLib & This function has 3 inputs and three outputs. The first output is assigned to 1 if in total 1 input is assigned to 1. The second output is assigned to 1 if in total 2 inputs are assigned to 1. The third output is assigned to 1 if in total all 3 inputs are assigned to 1.\\
+\texttt{one-two-three-v2\_100} & 5 & 69 & RevLib & This function has 3 inputs and three outputs. The first output is assigned to 1 if in total 1 input is assigned to 1. The second output is assigned to 1 if in total 2 inputs are assigned to 1. The third output is assigned to 1 if in total all 3 inputs are assigned to 1.\\
+\texttt{one-two-three-v3\_101} & 5 & 70 & RevLib & This function has 3 inputs and three outputs. The first output is assigned to 1 if in total 1 input is assigned to 1. The second output is assigned to 1 if in total 2 inputs are assigned to 1. The third output is assigned to 1 if in total all 3 inputs are assigned to 1.\\
+\texttt{plus63mod4096\_163} & 13 & 128744 & RevLib & Add 63 to the input modulo 4096\\
+\texttt{plus63mod8192\_164} & 14 & 187112 & RevLib & Add 63 to the input modulo 8192\\
+\texttt{pm1\_249} & 14 & 1776 & RevLib & \\
+\texttt{radd\_250} & 13 & 3213 & RevLib & \\
+\texttt{rd32-v0\_66} & 4 & 34 & RevLib & Counts the number of ones in the input.\\
+\texttt{rd32-v1\_68} & 4 & 36 & RevLib & Counts the number of ones in the input.\\
+\texttt{rd32\_270} & 5 & 84 & RevLib & Counts the number of ones in the input.\\
+\texttt{rd53\_130} & 7 & 1043 & RevLib & Counts the number of ones in the input.\\
+\texttt{rd53\_131} & 7 & 469 & RevLib & Counts the number of ones in the input.\\
+\texttt{rd53\_133} & 7 & 580 & RevLib & Counts the number of ones in the input.\\
+\texttt{rd53\_135} & 7 & 296 & RevLib & Counts the number of ones in the input.\\
+\texttt{rd53\_138} & 8 & 132 & RevLib & Counts the number of ones in the input.\\
+\texttt{rd53\_251} & 8 & 1291 & RevLib & Counts the number of ones in the input.\\
+\texttt{rd53\_311} & 13 & 275 & RevLib & Counts the number of ones in the input.\\
+\texttt{rd73\_140} & 10 & 230 & RevLib & Counts the number of ones in the input.\\
+\texttt{rd73\_252} & 10 & 5321 & RevLib & Counts the number of ones in the input.\\
+\texttt{rd84\_142} & 15 & 343 & RevLib & Counts the number of ones in the input.\\
+\texttt{rd84\_253} & 12 & 13658 & RevLib & Counts the number of ones in the input.\\
+\texttt{root\_255} & 13 & 17159 & RevLib & \\
+\texttt{sao2\_257} & 14 & 38577 & RevLib & \\
+\texttt{sf\_274} & 6 & 781 & RevLib & Sample function generated using ESOPSolver v.0 to demonstrate the use of ordering product terms and modifying variable polarity indices.\\
+\texttt{sf\_276} & 6 & 778 & RevLib & Sample function generated using ESOPSolver v.0 to demonstrate the use of ordering product terms and modifying variable polarity indices.\\
+\texttt{sqn\_258} & 10 & 10223 & RevLib & \\
+\texttt{sqrt8\_260} & 12 & 3009 & RevLib & \\
+\texttt{squar5\_261} & 13 & 1993 & RevLib & \\
+\texttt{square\_root\_7} & 15 & 7630 &  & \\
+\texttt{sym10\_262} & 12 & 64283 & RevLib & Symmetric function. This is a 10 inputs and 1 output function\\
+\texttt{sym6\_145} & 7 & 3888 & RevLib & Symmetric function. This is a 6 inputs and 1 output function. The output is assigned to one iff the number of ones in the input is 2, 3, or 4\\
+\texttt{sym6\_316} & 14 & 270 & RevLib & Symmetric function. This is a 6 inputs and 1 output function. The output is assigned to one iff the number of ones in the input is 2, 3, or 4\\
+\texttt{sym9\_146} & 12 & 328 & RevLib & Symmetric function. This is a 9 inputs and 1 output function. The output is assigned to one iff the number of ones in the input is 3, 4, 5 or 6\\
+\texttt{sym9\_148} & 10 & 21504 & RevLib & Symmetric function. This is a 9 inputs and 1 output function. The output is assigned to one iff the number of ones in the input is 3, 4, 5 or 6\\
+\texttt{sym9\_193} & 11 & 34881 & RevLib & Symmetric function. This is a 9 inputs and 1 output function. The output is assigned to one iff the number of ones in the input is 3, 4, 5 or 6\\
+\texttt{sys6-v0\_111} & 10 & 215 & RevLib & \texttt{sym6}\\
+\texttt{urf1\_149} & 9 & 184864 & RevLib & Unstructured Reversible Function 1\\
+\texttt{urf1\_278} & 9 & 54766 & RevLib & Unstructured Reversible Function 1\\
+\texttt{urf2\_152} & 8 & 80480 & RevLib & Unstructured Reversible Function 2\\
+\texttt{urf2\_277} & 8 & 20112 & RevLib & Unstructured Reversible Function 2\\
+\texttt{urf3\_155} & 10 & 423488 & RevLib & Unstructured Reversible Function 3\\
+\texttt{urf3\_279} & 10 & 125362 & RevLib & Unstructured Reversible Function 3\\
+\texttt{urf4\_187} & 11 & 512064 & RevLib & Unstructured Reversible Function 4\\
+\texttt{urf5\_158} & 9 & 164416 & RevLib & Unstructured Reversible Function 5\\
+\texttt{urf5\_280} & 9 & 49829 & RevLib & Unstructured Reversible Function 5\\
+\texttt{urf6\_160} & 15 & 171840 & RevLib & Unstructured Reversible Function 6\\
+\texttt{wim\_266} & 11 & 986 & RevLib & \\
+\texttt{xor5\_254} & 6 & 7 & RevLib & \\
+\texttt{z4\_268} & 11 & 3073 & RevLib & \\
+\hline
+\end{tabular}
+\end{table}
+
+
+\begin{block}{Classification}
+Based on the RevLib algorithm classification
+
+\begin{center}    
+\begin{tikzpicture}[sibling distance=3pt]
+  \tikzset{grow'=right,level distance=130pt}
+  \tikzset{execute at begin node=\strut}
+  \tikzset{every tree node/.style={align=center,anchor=base west}}
+  %% \tikzset{edge from parent/.style={draw,
+  %%     edge from parent path={(\tikzparentnode.east)
+  %%       -- +(0,-8pt)
+  %%       |- (\tikzchildnode)}}}
+  \tikzset{level 2/.style={level distance=120pt}}
+  %% \tikzset{level 3/.style={level distance=120pt}}
+  %% \tikzset{level 4/.style={level distance=100pt}}
+  %% \tikzset{frontier/.style={distance from root=500pt}}
+  \Tree [.{Benchmarks Classes}
+    {Quantum Gates}
+    {Encoding Functions}
+    {Arithmetic Functions}
+    {Miscellaneous}
+    ]
+    \end{tikzpicture}
+\end{center}
+
+\begin{block}{Quantum gates}
+\begin{itemize}
+\item Miller Gate
+\end{itemize}
+\end{block}
+
+\begin{block}{Encoding Functions}
+\begin{itemize}
+\item Decod24
+\item Decod24 with enable
+\item Graycode
+\item Hamming Code
+\end{itemize}
+\end{block}
+
+\begin{block}{Arithmetic Functions}
+\begin{itemize}
+\item ALUs
+\item 0410184
+\item 1-bit Adder / rd32
+\item 4 greater than 10
+\item 4 greater than 11
+\item 4 greater than 12
+\item 4 greater than 13
+\item 4 greater than 4
+\item 4 greater than 5
+\item 4 modulo 7
+\item Check 4 modulo 5
+\item dist
+\item majority
+\item max46
+\item mlp4
+\item mod5adder
+\item mod5d1
+\item mod5d2
+\item mod5mils
+\item Modulo 8/10 Counter
+\item One-Two-Three Counter
+\item plus127mod8192
+\item plus63mod4096
+\item plus63mod8192
+\item radd
+\item rd32
+\item rd53
+\item rd73
+\item rd84
+\item root
+\item sqn
+\item sqrt8
+\item squar5
+\item xor5
+\item z4
+\end{itemize}
+\end{block}
+
+\begin{block}{Miscellaneous}
+\begin{itemize}
+\item 9symml
+\item adr4
+\item aj-e11
+\item C17
+\item clip
+\item cm152a
+\item cm42a
+\item cm82a
+\item cm85a
+\item co14
+\item con1
+\item cycle10\(_{\text{2}}\)
+\item dc1
+\item dc2
+\item ex-1
+\item ex1
+\item ex2
+\item ex3
+\item f2
+\item inc
+\item life
+\item misex1
+\item pm1
+\item sao2
+\item Unstructured Reversible Functions. The urf benchmarks include six functions with various sizes that have no regular structure in their specifications. These functions are introduced to evaluate the behavior of a synthesis algorithm in synthesizing completely unstructured functions. The urf functions were originally proposed by M. Saeedi.
+\item 3\(_{\text{17}}\)
+\item 4\(_{\text{49}}\)
+\item Hidden Weighted Bit
+\item sym10
+\item sym6
+\item sym9
+\end{itemize}
+\end{block}
+\end{block}
+
+
+\begin{block}{Statistics}
+\begin{itemize}
+\item Highest amount of gates: \texttt{urf} has a maximum of 512064 gates followed by the \texttt{hwb9\_119} with 207775 gates
+\item Number of different algorithms: 83
+\item More details in \href{benchmarks\_profile/README.org}{Benchmarks Profile}
+\end{itemize}
+\end{block}
+\end{block}
+
+\begin{block}{OPENQASM to OpenQL translation}
+TODO\ldots{}
+\end{block}
+
+\begin{block}{OpenQL compilation}
+The configuration file used to compile the OpenQL algorithms is \url{hardware\_config\_cc\_light.json}
+\end{block}
+\end{frame}
+\end{document}
